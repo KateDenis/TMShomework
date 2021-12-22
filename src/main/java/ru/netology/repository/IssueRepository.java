@@ -24,18 +24,33 @@ public class IssueRepository {
     }
 
     public List<Issue> findByAuthor(String author) {
-        issues.removeIf(el -> !Objects.equals(el.getAuthor(), author));
-        return issues;
+        List<Issue> result = new ArrayList<>();
+        for (Issue issue : this.issues) {
+            if (author.equals(issue.getAuthor())) {
+                result.add(issue);
+            }
+        }
+        return result;
     }
 
     public List<Issue> findByLabel(Set<String> label) {
-        issues.removeIf(el -> !Objects.equals(el.getLabel(), label));
-        return issues;
+        List<Issue> result = new ArrayList<>();
+        for (Issue issue : this.issues) {
+            if (label.equals(issue.getLabel())) {
+                result.add(issue);
+            }
+        }
+        return result;
     }
 
     public List<Issue> findByAssignee(Set<String> assignee) {
-        issues.removeIf(el -> !Objects.equals(el.getAssignee(), assignee));
-        return issues;
+        List<Issue> result = new ArrayList<>();
+        for (Issue issue : this.issues) {
+            if (assignee.equals(issue.getAssignee())) {
+                result.add(issue);
+            }
+        }
+        return result;
     }
 
     public Issue getById(int id) {
